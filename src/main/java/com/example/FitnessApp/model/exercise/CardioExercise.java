@@ -12,12 +12,12 @@ import java.time.Duration;
 @Getter
 @NoArgsConstructor
 public class CardioExercise extends Exercise {
-    private float distance;
+    private double distance;
     private Duration duration;
-    private float tempo;
+    private double tempo;
     private Cardio type;
 
-    public CardioExercise(String name, String equipment, String instructions, float distance, Duration duration, float tempo, Cardio type) {
+    public CardioExercise(String name, String equipment, String instructions, double distance, Duration duration, double tempo, Cardio type) {
         super(name, equipment, instructions);
         this.distance = distance;
         this.duration = duration;

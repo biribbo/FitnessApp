@@ -4,10 +4,12 @@ import com.example.FitnessApp.model.exercise.StrengthExercise;
 import com.example.FitnessApp.model.training.StrengthTraining;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.Duration;
 import java.time.LocalDate;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Getter
 @NoArgsConstructor
@@ -16,14 +18,21 @@ public class StrengthTrainingDTO {
     private LocalDate date;
     private String title;
     private Duration duration;
-    private int weight;
+    @Setter
+    private double weight;
+    @Setter
     private int exercisesCount;
+    @Setter
     private int sets;
+    @Setter
     private int reps;
-    private Set<StrengthExercise> exercises;
+    private Set<StrengthExerciseDTO> exercises;
 
     public StrengthTraining toModel() {
-        return new StrengthTraining(date, title, duration, weight, exercisesCount, sets, reps, exercises);
+        Set<StrengthExercise> exercisesModel = exercises.stream()
+                .map(StrengthExerciseDTO::toModel)
+                .collect(Collectors.toSet());
+        return new StrengthTraining(date, title, duration, weight, exercisesCount, sets, reps, exercisesModel);
     }
 
     public StrengthTrainingDTO(StrengthTraining source) {
@@ -35,17 +44,15 @@ public class StrengthTrainingDTO {
         this.exercisesCount = source.getExercisesCount();
         this.sets = source.getSets();
         this.reps = source.getReps();
-        this.exercises = source.getExercises();
+        this.exercises = source.getExercises().stream()
+                .map(StrengthExerciseDTO::new)
+                .collect(Collectors.toSet());
     }
 
-    public StrengthTrainingDTO(LocalDate date, String title, Duration duration, int weight, int exercisesCount, int sets, int reps, Set<StrengthExercise> exercises) {
+    public StrengthTrainingDTO(LocalDate date, String title, Duration duration, Set<StrengthExerciseDTO> exercises) {
         this.date = date;
         this.title = title;
         this.duration = duration;
-        this.weight = weight;
-        this.exercisesCount = exercisesCount;
-        this.sets = sets;
-        this.reps = reps;
         this.exercises = exercises;
     }
 }

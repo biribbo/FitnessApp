@@ -2,7 +2,7 @@ package com.example.FitnessApp.model.training;
 import com.example.FitnessApp.model.exercise.StrengthExercise;
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -15,14 +15,14 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 public class StrengthTraining extends Training {
-    private int weight;
+    private double weight;
     private int exercisesCount;
     private int sets;
     private int reps;
-    @ManyToMany
+    @OneToMany
     private Set<StrengthExercise> exercises;
 
-    public StrengthTraining(LocalDate date, String title, Duration duration, int weight, int exercisesCount, int sets, int reps, Set<StrengthExercise> exercises) {
+    public StrengthTraining(LocalDate date, String title, Duration duration, double weight, int exercisesCount, int sets, int reps, Set<StrengthExercise> exercises) {
         super(date, title, duration);
         this.weight = weight;
         this.exercisesCount = exercisesCount;

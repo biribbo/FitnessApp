@@ -4,6 +4,7 @@ import com.example.FitnessApp.model.exercise.Muscle;
 import com.example.FitnessApp.model.exercise.StrengthExercise;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Getter
 @NoArgsConstructor
@@ -16,11 +17,14 @@ public class StrengthExerciseDTO {
     private int rpe;
     private int sets;
     private int reps;
-    private float estimatedOneRepMax;
+    private double weight;
+    @Setter
+    private double estimatedOneRepMax;
 
     public StrengthExercise toModel() {
-        return new StrengthExercise(name, equipment, instructions, Muscle.valueOf(muscle), rpe, sets, reps, estimatedOneRepMax);
+        return new StrengthExercise(name, equipment, instructions, Muscle.valueOf(muscle), rpe, sets, reps, weight, estimatedOneRepMax);
     }
+
     public StrengthExerciseDTO(StrengthExercise source) {
         this.id = source.getId();
         this.name = source.getName();
@@ -30,10 +34,11 @@ public class StrengthExerciseDTO {
         this.rpe = source.getRpe();
         this.sets = source.getSets();
         this.reps = source.getReps();
+        this.weight = source.getWeight();
         this.estimatedOneRepMax = source.getEstimatedOneRepMax();
     }
 
-    public StrengthExerciseDTO(String name, String equipment, String instructions, String muscle, int rpe, int sets, int reps, float estimatedOneRepMax) {
+    public StrengthExerciseDTO(String name, String equipment, String instructions, String muscle, int rpe, int sets, int reps, double weight) {
         this.name = name;
         this.equipment = equipment;
         this.instructions = instructions;
@@ -41,6 +46,6 @@ public class StrengthExerciseDTO {
         this.rpe = rpe;
         this.sets = sets;
         this.reps = reps;
-        this.estimatedOneRepMax = estimatedOneRepMax;
+        this.weight = weight;
     }
 }

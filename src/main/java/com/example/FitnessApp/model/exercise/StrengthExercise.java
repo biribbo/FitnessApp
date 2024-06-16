@@ -14,14 +14,16 @@ public class StrengthExercise extends Exercise {
     private int rpe;
     private int sets;
     private int reps;
-    private float estimatedOneRepMax;
+    private double weight;
+    private double estimatedOneRepMax;
 
-    public StrengthExercise(String name, String equipment, String instructions, Muscle muscle, int RPE, int sets, int reps, float estimatedOneRepMax) {
+    public StrengthExercise(String name, String equipment, String instructions, Muscle muscle, int RPE, int sets, int reps, double weight, double estimatedOneRepMax) {
         super(name, equipment, instructions);
         this.muscle = muscle;
         this.rpe = RPE;
         this.sets = sets;
         this.reps = reps;
+        this.weight = weight;
         this.estimatedOneRepMax = estimatedOneRepMax;
     }
 }

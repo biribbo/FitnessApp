@@ -14,9 +14,9 @@ public class CardioExerciseDTO {
     private String name;
     private String equipment;
     private String instructions;
-    private float distance;
+    private double distance;
     private Duration duration;
-    private float tempo;
+    private double tempo;
     private String type;
 
     public CardioExercise toModel() {
@@ -34,7 +34,7 @@ public class CardioExerciseDTO {
         this.type = source.getType().name().toLowerCase();
     }
 
-    public CardioExerciseDTO(String name, String equipment, String instructions, float distance, Duration duration, float tempo, String type) {
+    public CardioExerciseDTO(String name, String equipment, String instructions, double distance, Duration duration, double tempo, String type) {
         this.name = name;
         this.equipment = equipment;
         this.instructions = instructions;

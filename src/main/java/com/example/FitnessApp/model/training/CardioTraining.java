@@ -2,7 +2,7 @@ package com.example.FitnessApp.model.training;
 
 import com.example.FitnessApp.model.exercise.CardioExercise;
 import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,12 +14,12 @@ import java.util.Set;
 @Getter
 @NoArgsConstructor
 public class CardioTraining extends Training {
-    @ManyToMany
+    @OneToMany
     private Set<CardioExercise> exercises;
-    private float distance;
-    private float tempo;
+    private double distance;
+    private double tempo;
 
-    public CardioTraining(LocalDate date, String title, Duration duration, Set<CardioExercise> exercises, float distance, float tempo) {
+    public CardioTraining(LocalDate date, String title, Duration duration, Set<CardioExercise> exercises, double distance, double tempo) {
         super(date, title, duration);
         this.exercises = exercises;
         this.distance = distance;
