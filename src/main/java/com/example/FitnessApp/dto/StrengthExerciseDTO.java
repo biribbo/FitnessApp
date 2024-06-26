@@ -12,7 +12,6 @@ public class StrengthExerciseDTO {
     private int id;
     private String name;
     private String equipment;
-    private String instructions;
     private String muscle;
     private int rpe;
     private int sets;
@@ -22,14 +21,13 @@ public class StrengthExerciseDTO {
     private double estimatedOneRepMax;
 
     public StrengthExercise toModel() {
-        return new StrengthExercise(name, equipment, instructions, Muscle.valueOf(muscle), rpe, sets, reps, weight, estimatedOneRepMax);
+        return new StrengthExercise(name, equipment, Muscle.valueOf(muscle), rpe, sets, reps, weight, estimatedOneRepMax);
     }
 
     public StrengthExerciseDTO(StrengthExercise source) {
         this.id = source.getId();
         this.name = source.getName();
         this.equipment = source.getEquipment();
-        this.instructions = source.getInstructions();
         this.muscle = source.getMuscle().name().toLowerCase();
         this.rpe = source.getRpe();
         this.sets = source.getSets();
@@ -38,10 +36,9 @@ public class StrengthExerciseDTO {
         this.estimatedOneRepMax = source.getEstimatedOneRepMax();
     }
 
-    public StrengthExerciseDTO(String name, String equipment, String instructions, String muscle, int rpe, int sets, int reps, double weight) {
+    public StrengthExerciseDTO(String name, String equipment, String muscle, int rpe, int sets, int reps, double weight) {
         this.name = name;
         this.equipment = equipment;
-        this.instructions = instructions;
         this.muscle = muscle;
         this.rpe = rpe;
         this.sets = sets;

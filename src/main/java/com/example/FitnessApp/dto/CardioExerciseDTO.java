@@ -13,31 +13,28 @@ public class CardioExerciseDTO {
     private int id;
     private String name;
     private String equipment;
-    private String instructions;
     private double distance;
     private Duration duration;
     private double tempo;
     private String type;
 
     public CardioExercise toModel() {
-        return new CardioExercise(name, equipment, instructions, distance, duration, tempo, Cardio.valueOf(type));
+        return new CardioExercise(name, equipment, distance, duration, tempo, Cardio.valueOf(type));
     }
 
     public CardioExerciseDTO(CardioExercise source) {
         this.id = source.getId();
         this.name = source.getName();
         this.equipment = source.getEquipment();
-        this.instructions = source.getInstructions();
         this.distance = source.getDistance();
         this.duration = source.getDuration();
         this.tempo = source.getTempo();
         this.type = source.getType().name().toLowerCase();
     }
 
-    public CardioExerciseDTO(String name, String equipment, String instructions, double distance, Duration duration, double tempo, String type) {
+    public CardioExerciseDTO(String name, String equipment, double distance, Duration duration, double tempo, String type) {
         this.name = name;
         this.equipment = equipment;
-        this.instructions = instructions;
         this.distance = distance;
         this.duration = duration;
         this.tempo = tempo;

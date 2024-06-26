@@ -26,13 +26,16 @@ public class StrengthTrainingDTO {
     private int sets;
     @Setter
     private int reps;
+    @Setter
     private Set<StrengthExerciseDTO> exercises;
+    @Setter
+    private String user;
 
     public StrengthTraining toModel() {
         Set<StrengthExercise> exercisesModel = exercises.stream()
                 .map(StrengthExerciseDTO::toModel)
                 .collect(Collectors.toSet());
-        return new StrengthTraining(date, title, duration, weight, exercisesCount, sets, reps, exercisesModel);
+        return new StrengthTraining(user, date, title, duration, weight, exercisesCount, sets, reps, exercisesModel);
     }
 
     public StrengthTrainingDTO(StrengthTraining source) {

@@ -14,9 +14,8 @@ public interface TrainingRepository extends JpaRepository<Training, Integer> {
     @NonNull
     <S extends Training> S save(@NonNull S entity);
 
-    @Override
     @NonNull
-    List<Training> findAll();
+    List<Training> findAllByUserId(String userId);
 
     @Override
     @NonNull

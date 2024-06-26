@@ -18,10 +18,12 @@ public abstract class Training {
     private LocalDate date;
     private String title;
     private Duration duration;
+    private String userId;
 
-    public Training(LocalDate date, String title, Duration duration) {
+    public Training(LocalDate date, String title, Duration duration, String user) {
         this.date = date;
         this.title = title;
         this.duration = duration;
+        this.userId = user;
     }
 }

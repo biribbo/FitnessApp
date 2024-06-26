@@ -14,11 +14,9 @@ public abstract class Exercise {
     private int id;
     private String name;
     private String equipment;
-    private String instructions;
 
-    public Exercise(String name, String equipment, String instructions) {
+    public Exercise(String name, String equipment) {
         this.name = name;
         this.equipment = equipment;
-        this.instructions = instructions;
     }
 }

@@ -8,7 +8,7 @@ import lombok.Setter;
 
 import java.time.Duration;
 import java.time.LocalDate;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Getter
@@ -23,12 +23,14 @@ public class CardioTrainingDTO {
     @Setter
     private double tempo;
     private Set<CardioExerciseDTO> exercises;
+    @Setter
+    private String user;
 
     public CardioTraining toModel() {
         Set<CardioExercise> exercisesModel = exercises.stream()
                 .map(CardioExerciseDTO::toModel)
                 .collect(Collectors.toSet());
-        return new CardioTraining(date, title, duration, exercisesModel, distance, tempo);
+        return new CardioTraining(user, date, title, duration, exercisesModel, distance, tempo);
     }
 
     public CardioTrainingDTO(CardioTraining source) {

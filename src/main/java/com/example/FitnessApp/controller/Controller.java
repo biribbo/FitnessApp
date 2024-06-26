@@ -37,10 +37,6 @@ public class Controller {
 
     @PostMapping(path = "/strength")
     ResponseEntity<StrengthTrainingDTO> newStrengthTraining(@RequestBody StrengthTrainingDTO strengthTrainingDTO) {
-        strengthTrainingDTO.getExercises().forEach(strengthExerciseDTO -> {
-            exerciseService.calculateOneRepMax(strengthExerciseDTO);
-            exerciseService.createExercise(strengthExerciseDTO);
-        });
         StrengthTrainingDTO created = trainingService.createStrengthTraining(strengthTrainingDTO);
         return ResponseEntity.created(URI.create("/strength/" + created.getId())).body(created);
     }
